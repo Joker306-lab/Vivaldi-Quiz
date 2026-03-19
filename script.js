@@ -26,21 +26,38 @@ function load(){
  q.a.forEach((a,i)=>{
   let b=document.createElement("button");
   b.innerText=a;
-  b.onclick=()=>check(i);
+  b.onclick=()=>check(i, b);
   box.appendChild(b);
  });
  start();
 }
 
-function check(i){
+function check(i, button){
  clearInterval(timer);
- if(i===questions[current].correct){
+ let buttons = document.querySelectorAll("#answers button");
+ let correctIndex = questions[current].correct;
+
+ buttons.forEach((btn, idx)=>{
+  if(idx === correctIndex){
+    btn.classList.add("correct");
+  }
+ });
+
+ if(i === correctIndex){
+  button.classList.add("correct");
   score++;
  } else {
+  button.classList.add("wrong");
   questions.push(questions[current]);
  }
+
  document.getElementById("score").innerText="Score: "+score;
- current++; joker=false; load();
+
+ setTimeout(()=>{
+  current++;
+  joker=false;
+  load();
+ }, 1000);
 }
 
 function start(){
