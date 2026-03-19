@@ -84,13 +84,8 @@ body {
   color: white;
 }
 
-.timer-wrap {
-  position: relative;
-  overflow: hidden;
-}
-
 .timer {
-  color: #fff;
+  color: #ffffff;
 }
 
 .timer.warning {
