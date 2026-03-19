@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Arial;
-  background: linear-gradient(135deg, #141e30, #243b55);
+  background: #0f172a;
   color: white;
 }
 
@@ -9,19 +9,23 @@ body {
   max-width: 500px;
   margin: auto;
   padding: 20px;
+}
+
+h1 {
   text-align: center;
 }
 
 #hud {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 
 #timer {
-  font-size: 22px;
+  background: #ef4444;
+  padding: 8px 14px;
+  border-radius: 12px;
   font-weight: bold;
-  color: #ff5252;
 }
 
 #card {
@@ -33,29 +37,24 @@ body {
 
 #answers button {
   width: 100%;
-  padding: 14px;
-  margin: 8px 0;
+  padding: 16px;
+  margin: 10px 0;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   font-size: 16px;
-  background: #243b55;
+  background: #1e293b;
   color: white;
-  transition: 0.2s;
 }
 
-.correct {
-  background: #4caf50 !important;
-}
-
-.wrong {
-  background: #e53935 !important;
-}
+.correct { background: #22c55e !important; }
+.wrong { background: #ef4444 !important; }
 
 #joker {
   margin-top: 15px;
-  padding: 12px 20px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
   border: none;
-  border-radius: 12px;
-  background: #ff9800;
+  background: #f59e0b;
   color: white;
 }

@@ -9,14 +9,15 @@ let questions = [
 
 let current=0,timer,time=20,joker=false,score=0;
 let highscore = localStorage.getItem("highscore") || 0;
-document.getElementById("highscore").innerText="Highscore: "+highscore;
+
+document.getElementById("highscore").innerText=highscore;
 
 function load(){
  if(current>=questions.length){
   if(score>highscore){
     localStorage.setItem("highscore", score);
   }
-  document.getElementById("question").innerText="Fertig! Score: "+score;
+  document.getElementById("question").innerText="Fertig! "+score;
   return;
  }
  let q=questions[current];
@@ -26,38 +27,36 @@ function load(){
  q.a.forEach((a,i)=>{
   let b=document.createElement("button");
   b.innerText=a;
-  b.onclick=()=>check(i, b);
+  b.onclick=()=>check(i,b);
   box.appendChild(b);
  });
  start();
 }
 
-function check(i, button){
+function check(i,btn){
  clearInterval(timer);
- let buttons = document.querySelectorAll("#answers button");
- let correctIndex = questions[current].correct;
+ let correct = questions[current].correct;
+ let buttons=document.querySelectorAll("#answers button");
 
- buttons.forEach((btn, idx)=>{
-  if(idx === correctIndex){
-    btn.classList.add("correct");
-  }
+ buttons.forEach((b,idx)=>{
+  if(idx===correct) b.classList.add("correct");
  });
 
- if(i === correctIndex){
-  button.classList.add("correct");
+ if(i===correct){
+  btn.classList.add("correct");
+  document.getElementById("correctSound").play();
   score++;
  } else {
-  button.classList.add("wrong");
+  btn.classList.add("wrong");
+  document.getElementById("wrongSound").play();
   questions.push(questions[current]);
  }
 
- document.getElementById("score").innerText="Score: "+score;
+ document.getElementById("score").innerText=score;
 
  setTimeout(()=>{
-  current++;
-  joker=false;
-  load();
- }, 1000);
+  current++; joker=false; load();
+ },1000);
 }
 
 function start(){
